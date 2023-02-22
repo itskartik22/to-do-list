@@ -27,7 +27,6 @@ function addTaskItem() {
     addTaskDisplay();
     addEvent()
     updateDeletion()
-
 }
 taskAddBtn.addEventListener('click', addTaskItem)
 
@@ -36,7 +35,7 @@ function addTaskDisplay() {
 }
 
 //Deleteion
-function updateDeletion(){
+function updateDeletion() {
     taskDelBtn = document.querySelectorAll('.del__task')
     taskDelBtn.forEach(element => {
         element.addEventListener('click', () => {
@@ -44,7 +43,7 @@ function updateDeletion(){
             element.parentElement.classList.add('fade_animation')
             setTimeout(() => {
                 element.parentElement.style.display = 'none'
-            },2000)
+            }, 2000)
         })
     });
 }
@@ -53,9 +52,17 @@ function updateDeletion(){
 function addEvent() {
     taskItem = document.querySelectorAll('.task__item')
     taskItem.forEach(element => {
+        let color = element.firstElementChild.style.backgroundColor;
         element.addEventListener('click', () => {
+            color = 'green'
             element.style.textDecoration = "line-through"
             element.childNodes[1].style.backgroundColor = 'green'
+        })
+        element.addEventListener('mouseover', () => {
+            element.firstElementChild.style.backgroundColor = 'purple'
+        })
+        element.addEventListener('mouseout', () => {
+            element.firstElementChild.style.backgroundColor = color
         })
     })
 }
@@ -64,3 +71,5 @@ function addEvent() {
 document.getElementsByClassName('clear__btn')[0].onclick = () => {
     taskBoxContainer.innerHTML = ''
 }
+
+//hover effect
